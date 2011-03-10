@@ -13,11 +13,16 @@ user.save
 
 
 Requirements
-=======
+============
 
 - Rails 3
 - ruby-net-ldap
 
+
+Requirements
+============
+
+Define ldap servers in config/ldap.yml (look at the example directory)
 
 
 Copyright (c) 2011 Jeff Beck, released under the MIT license

@@ -1,0 +1,8 @@
+Description:
+    Explain the generator
+
+Example:
+    rails generate active_account Thing
+
+    This will create:
+        what/will/it/create

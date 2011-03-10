@@ -1,0 +1,2 @@
+class ExampleAccount < ActiveDirectoryAccount
+end
