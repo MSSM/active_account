@@ -1,6 +1,7 @@
 module ActiveAccount
   module Mail
 
+    # TODO Just because I like emails formatted like this doesn't mean I need to hardcode it
     def construct_local_mail_part
       begin
         if self.initials.blank? or self.initials.first.empty?

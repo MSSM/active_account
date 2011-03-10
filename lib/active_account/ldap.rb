@@ -1,6 +1,9 @@
 module ActiveAccount
   module Ldap
  
+    # TODO We should try another server if this one isn't up for us
+    #      or even load balance between a few (though this can be a
+    #      problem sometimes since AD has a largeish replication delay).
     def connect(login, password)
       @config[:servers].each do |server|
         @current_connection = Net::LDAP.new(

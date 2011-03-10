@@ -35,6 +35,8 @@ Instructions
 Issues & Concerns
 =================
 
+- Creating users easier will be coming soon, but right now you'll have to somehow manually setup 
+  attributes like dn by hand. This currently is just too coupled to our environment to release.
 - We don't have any tests for this up on github yet.
 - Some of the code was written a couple years ago, and may not be totally up to snuff (but it works!)
 - The caching module isn't included at this time, since it's tightly coupled to our environment. This means

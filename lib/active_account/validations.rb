@@ -106,20 +106,21 @@ module ActiveAccount
           end
         end
       end
-      
-      def validates_date_is_current(*attributes)
-        v = self.instance_method(:validate)
-      
-        send(:define_method, :validate) do
-          v.bind(self).call                         
-          begin
-            value = Date.parse_date(send(attributes.first).first)
-          rescue
-            value = nil
-          end
-          errors.add(attributes.first, "must be a present or future date.") if value != "0" && !value.blank? && value.beginning_of_day < Time.now.beginning_of_day
-        end
-      end
+
+      # TODO Hmm, it looks like I didn't include our modified Date class
+      # def validates_date_is_current(*attributes)
+      #  v = self.instance_method(:validate)
+      # 
+      #   send(:define_method, :validate) do
+      #     v.bind(self).call                         
+      #     begin
+      #       value = Date.parse_date(send(attributes.first).first)
+      #     rescue
+      #       value = nil
+      #     end
+      #     errors.add(attributes.first, "must be a present or future date.") if value != "0" && !value.blank? && value.beginning_of_day < Time.now.beginning_of_day
+      #   end
+      # end
     end
   end
 end

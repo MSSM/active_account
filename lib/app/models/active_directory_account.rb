@@ -164,6 +164,7 @@ class ActiveDirectoryAccount < ActiveAccount::Base
   ####################
   # Mail
 
+  # TODO mail_user is used for an unsaved, new object, passed as a parameter.
   def mail_enabled?
     begin
       unless self.mail_user.blank?

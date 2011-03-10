@@ -40,6 +40,8 @@ module ActiveAccount
       end
     end
 
+    # FIXME We make this distinction between new and existing
+    # accounts though we shouldn't be doing it like we do.
     def new_account?(user = nil)
       not (user ? user : @user).is_a? Net::LDAP::Entry
     end

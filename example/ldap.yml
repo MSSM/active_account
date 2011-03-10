@@ -5,7 +5,6 @@ development:
     port: 636
     domain: example.com
     mail_domain: example.com
-    server: ad1.example.com
     servers: [ad1.example.com, ad2.example.com]
     username: userid@example.com
     password: Passw0rd
