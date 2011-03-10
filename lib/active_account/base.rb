@@ -76,16 +76,16 @@ module ActiveAccount
       # ==== Examples
       #
       #   # find by userid
-      #   Directory.find( 'lastf01' )
+      #   Directory.find('flast')
       #
       #   # find all
-      #   Directory.find( :all, :sn => 'Last', :homedirectory => "*file_server_3*", :not => { :title => 'Director' } )
+      #   Directory.find(:all, :sn => 'Last', :homedirectory => "*file_server_3*", :not => {:title => 'Director'})
       #
       #   # find groups
-      #   Directory.find( :group, :cn => 'TestGroup' )
+      #   Directory.find(:group, :cn => 'TestGroup')
       #
       #   # find computers
-      #   Directory.find( :computer, :cn => 'MSSM-ELKINP01TI' )
+      #   Directory.find(:computer, :cn => 'My-Computer-01')
       def construct_cn( params )
         return "#{params[:sn]}, #{params[:givenname]} #{params[:initials]}" unless params[:initials].is_empty?
     		return "#{params[:sn]}, #{params[:givenname]}"
@@ -323,14 +323,16 @@ module ActiveAccount
       search(userid_filter)
     end
 
-    def search_for_collection(filter, options = nil)
+    def search_for_collection(filter, options=nil)
       begin
         collection = Array.new
-        if options and options.has_key? :attributes
+        if options and options.has_key?(:attributes) and not options[:attributes].nil?
           attributes = (Array(options[:attributes]) + [@config[:userid_attribute], 'objectclass']).uniq
         else
           attributes = nil
         end
+        puts options.inspect
+        puts attributes.inspect
         if options and options.has_key? :with_filter
           with_filter = options[:with_filter]
         else
@@ -339,7 +341,7 @@ module ActiveAccount
         Rails.logger.info "Filter: #{filter & with_filter}"
         Rails.logger.info "Attributes: #{attributes.inspect}"
         @current_connection.search(:filter => (filter & with_filter), :attributes => attributes) do |e|
-          userid = e.instance_variable_get( "@myhash" )[@config[:userid_attribute].to_sym].first
+          userid = e.instance_variable_get("@myhash")[@config[:userid_attribute].to_sym].first
           collection << Kernel.const_get(self.class.to_s.to_sym).send(:new, userid, e) unless userid.nil?
         end
         return collection if not collection.empty?
