@@ -1,0 +1,15 @@
+ActiveAccount
+=============
+
+Provides active record like to ldap directories
+
+
+Example
+=======
+
+user = ActiveDirectory.find(login_id)
+user.description = "I am a user."
+user.save
+
+
+Copyright (c) 2011 Jeff Beck, released under the MIT license
