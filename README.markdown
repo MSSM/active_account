@@ -4,21 +4,17 @@ ActiveAccount
 Provides ActiveRecord like access to ldap directories, including Microsoft's Active Directory.
 
 
-Example
-=======
+Examples
+========
 
-user = SomeDirectory.find("dvader")
-
-user.description = "Something something dark side"
-
-user.save
+    user = SomeDirectory.find("dvader")
+    user.description = "Something something dark side"
+    user.save
 
 
-addresses = SomeDirectory.find(:all, :sn => "Smith").map do |account|
-
-  account.mail.first # We use first since net/ldap returns values in an array, even if only one
-
-end
+    addresses = SomeDirectory.find(:all, :sn => "Smith").map do |account|
+      account.mail.first # We use first since net/ldap returns values in an array, even if only one
+    end
 
 
 Requirements
