@@ -13,6 +13,7 @@ user.description = "Something something dark side"
 
 user.save
 
+
 addresses = SomeDirectory.find(:all, :sn => "Smith").map do |account|
 
   account.mail.first # We use first since net/ldap returns values in an array, even if only one
